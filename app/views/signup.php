@@ -34,7 +34,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
 <form method="post" action="../auth/signup">
-    <input type="text" name="username" placeholder="username">username<br><br>
+    <input type="text" name="name" placeholder="username">username<br><br>
     <input type="text" name="surname" placeholder="surname">surname<br><br>
     <input type="text" name="email" placeholder="email">email<br><br>
     <input type="password" name="password" placeholder="password">password<br><br>

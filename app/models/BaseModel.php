@@ -2,6 +2,7 @@
 
 class BaseModel
 {
+    protected $table = '';
     public function db_connect()
     {
         try{
@@ -39,6 +40,7 @@ class BaseModel
 
     public function write($query, $data = [])
     {
+
         $db = $this->db_connect();
         $stm = $db->prepare($query);
 
@@ -60,4 +62,12 @@ class BaseModel
 
         }
     }
+
+//    public function delete($id)
+//    {
+//        $pdo = $this->db_connect();
+//        $sql = "DELETE FROM $this->table WHERE id = ?";
+//        $stmt = $pdo->prepare($sql);
+//        $stmt->execute([$id]);
+//    }
 }

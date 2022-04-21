@@ -59,9 +59,9 @@
         <td><?= $d['description'] ?></td>
         <td><?= $d['avg_review'] ?></td>
         <td><?= $d['image'] ?></td>
-        <td><a href="" >edit</a></td>
-        <td><a href="review/create/<?= $d['id']?>" >review</a></td>
-        <td><a href="product/delete/<?= $d['id']?>" >delete</a></td>
+        <td><a href="product/create?id=<?= $d['id']?>" >edit</a></td>
+        <td><a href="review/?id=<?= $d['id']?>" >review</a></td>
+        <td><a href="product/delete?id=<?= $d['id']?>" >delete</a></td>
     </tr>
     <?php } ?>
 
@@ -72,11 +72,6 @@
         $('#example').DataTable();
     } );
 </script>
-
-<!--<form action="upload.php" method="post" enctype="multipart/form-data">-->
-<!--    Select image to upload:-->
-<!--    <input type="file" name="fileToUpload" id="fileToUpload">-->
-<!--    <input type="submit" value="Upload Image" name="submit" onclick="">-->
 
 <a href="upload"> <button>Add</button> </a>
 </body>

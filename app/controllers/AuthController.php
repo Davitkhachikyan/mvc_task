@@ -3,15 +3,14 @@ class AuthController extends BaseController
 {
     public function signup()
     {
-
         $db = new BaseModel();
-            $arr['username'] = $_POST['username'];
+            $arr['name'] = $_POST['name'];
             $arr['password'] = $_POST['password'];
             $arr['email'] = $_POST['email'];
             $arr['surname'] = $_POST['surname'];
             $arr['age'] = $_POST['age'];
 
-            $query = "insert into users (username, password, email, age, surname) values (:username, :password, :email, :age, :surname)";
+            $query = "insert into users (name, password, email, age, surname) values (:name, :password, :email, :age, :surname)";
             $data = $db->write($query, $arr);
 
             if ($data) {

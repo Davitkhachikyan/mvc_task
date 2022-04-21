@@ -7,7 +7,7 @@ class DashboardController extends BaseController
         $user = new AuthController();
         if ($user->check_logged_in()) {
             $obj = $this->loadModel("ProductModel");
-            $data = $obj->show_products();
+            $data = $obj->show_products("select * from products");
             $this->view('dashboard', $data);
         }
         else{

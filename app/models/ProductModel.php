@@ -2,7 +2,7 @@
 
 class ProductModel extends  BaseModel
 {
-    public function show_products()
+    public function show_products($query)
     {
         $query = "select * from products";
         $data = $this->read($query);
@@ -11,14 +11,22 @@ class ProductModel extends  BaseModel
 
     public function find($id)
     {
-        $product = new BaseModel();
-        $query = "select * from products where id = $id";
-        $product->read($query);
+        $query = "select name from products where id = $id";
+        $product = $this->read($query);
         return $product;
     }
+
     public function delete($id)
     {
-        $product = new BaseModel();
-        $query = "delete from products where id = $id";
+        $pdo = $this->db_connect();
+        $pdo->prepare("DELETE FROM `products` WHERE id=?")->execute([$id]);
     }
+
+    public function update($name,$description, $image, $id)
+    {
+        $pdo = $this->db_connect();
+        $sql = "UPDATE products SET name=?, description=?, image=? WHERE id=?";
+        $pdo->prepare($sql)->execute([$name, $description, $image, $id]);
+    }
+
 }
