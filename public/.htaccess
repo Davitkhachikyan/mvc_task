@@ -3,3 +3,5 @@ RewriteEngine on
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*)$ index.php?url=$1 [L,QSA]
+#RewriteRule ^(?:[^/]*/)*([^/.]+\.(?:jpe?g|gif|bmp|png|tiff|css|js))$ /assets/$1 [R=301,L,NC]
+RewriteRule !\.(?:jpe?g|gif|bmp|png|tiff|css|js)$ index.php [L,NC]
