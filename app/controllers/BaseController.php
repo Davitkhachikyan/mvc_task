@@ -2,16 +2,14 @@
 
 class BaseController
 {
-    protected function view($view, $data = [])
+    function view($page,$data=[])
     {
-        if (file_exists("../app/views/".$view.".php"))
-        {
-            include "../app/views/".$view .".php";
+        if(count($data)){
+            extract($data);
         }
-        else{
-            include "../app/views/404.php";
-        }
+        require "../app/views/".$page .".php";;
     }
+
 
     protected function loadModel($model)
     {

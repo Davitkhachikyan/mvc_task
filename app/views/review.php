@@ -54,7 +54,7 @@
 
             <input type="text" placeholder="okk" name="comment_text" class="comment" style="display: block;width: 200px;min-height: 80px">
             <input type="submit" class="comment" style="display: block;margin-top: 20px">
-<!--            <input type="hidden" value="" name="product_name">-->
+            <input type="hidden" value="<?=$data['name']?>" name="product_name">
         </div>
     </div>
     </div>

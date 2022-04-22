@@ -8,13 +8,13 @@
     <title>Update</title>
 </head>
 <body>
-<form action="product/create" method="post" enctype="multipart/form-data">
-
-    <input type="file" name="file" id="fileToUpload"><br><br>
-    <input type="text" name="description">description <br><br>
-    <input type="text" name="name">name<br><br>
+UPDATE
+<form action="product/update" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="id" value="<?= $data['id']?>">
+    <input type="file" name="file" id="fileToUpload" value="<?= $data['image']?>"><br><br>
+    <input type="text" name="name" value="<?= $data['name']?>">name<br><br>
+    <input type="text" name="description" value="<?= $data['description']?>">description <br><br>
     <input type="submit" value="Update" name="submit"> <br><br>
-
 </form>
 
 </body>

@@ -2,7 +2,8 @@
 
 class BaseModel
 {
-    protected $table = '';
+    public $table;
+
     public function db_connect()
     {
         try{
@@ -32,6 +33,7 @@ class BaseModel
 
         if($check)
         {
+//            return $stm->fetchAll(PDO::FETCH_COLUMN);
             return $stm->fetchAll(PDO::FETCH_ASSOC);
         }else{
             return false;
@@ -63,11 +65,38 @@ class BaseModel
         }
     }
 
-//    public function delete($id)
-//    {
-//        $pdo = $this->db_connect();
-//        $sql = "DELETE FROM $this->table WHERE id = ?";
-//        $stmt = $pdo->prepare($sql);
-//        $stmt->execute([$id]);
-//    }
+    public function show_all()
+    {
+        $query = "select * from " . $this->table;
+        $data = $this->read($query);
+        return $data;
+    }
+
+    public function find($id)
+    {
+        $query = "select name from $this->table where id='$id'";
+        $data = $this->read($query);
+        return $data;
+    }
+
+    public function delete($id)
+    {
+        $pdo = $this->db_connect();
+        $pdo->prepare("DELETE FROM " . $this->table . " WHERE id=?")->execute([$id]);
+    }
+
+    public function update($data, $id)
+    {
+        $pdo = $this->db_connect();
+        $query = "UPDATE products SET name= :name, description= :description, image= :image WHERE id='$id'";
+        $pdo->prepare($query)->execute($data);
+    }
+
+    public function find_all_columns($id)
+    {
+        $query = "select * from $this->table where id='$id'";
+        $data = $this->read($query);
+        return $data;
+    }
+
 }

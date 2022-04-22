@@ -2,11 +2,9 @@
 
 class UserModel extends BaseModel
 {
-    public function find($id)
+    public function __construct()
     {
-        $query = "select name from users where id = $id";
-        $name = $this->read($query);
-        return $name;
+        $this->table = 'users';
     }
 
     public function find_by_email($email)

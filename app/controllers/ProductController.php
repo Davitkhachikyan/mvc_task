@@ -10,6 +10,7 @@ class ProductController extends BaseController
 
     public function create()
     {
+
         $db = new BaseModel();
         $folder = 'assets';
         $destination = $folder . $_FILES['file']['name'];
@@ -37,13 +38,12 @@ class ProductController extends BaseController
     public function update()
     {
         $product = $this->loadModel("ProductModel");
-        $name = $_POST['name'];
-        $description = $_POST['description'];
-        $image = $_FILES['file']['tmp_name'];
-        $id = $_GET['id'];
-        $product->update($id);
+        $data['name'] = $_POST['name'];
+        $data['description'] = $_POST['description'];
+        $data['image'] = $_FILES['file']['tmp_name'];
+        $id = $_POST['id'];
+        $product->update($data, $id);
         header("Location:" . ROOT . 'dashboard');
     }
-
 }
 
