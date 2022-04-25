@@ -99,4 +99,11 @@ class BaseModel
         return $data;
     }
 
+    public function update_image($data, $id)
+    {
+        $pdo = $this->db_connect();
+        $query = "UPDATE products SET name= :name, description= :description WHERE id='$id'";
+        $pdo->prepare($query)->execute($data);
+    }
+
 }
