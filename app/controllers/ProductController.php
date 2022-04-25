@@ -12,13 +12,13 @@ class ProductController extends BaseController
     {
 
         $db = new BaseModel();
-        $folder = 'assets';
+        $folder = 'assets/';
         $destination = $folder . $_FILES['file']['name'];
         move_uploaded_file($_FILES['file']['tmp_name'], $destination);
 
         $data['name'] = $_POST['name'];
         $data['description'] = $_POST['description'];
-        $data['image'] = $_FILES['file']['name'];
+        $data['image'] = $destination;
 
         $query = "insert into products (name, description, image) values (:name, :description, :image)";
         $result = $db->write($query, $data);

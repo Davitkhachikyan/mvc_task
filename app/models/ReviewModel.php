@@ -7,9 +7,9 @@ class ReviewModel extends BaseModel
         $this->table = 'reviews';
     }
 
-    public function avg_stars($name)
+    public function avg_stars($id)
     {
-        $query = "select * from reviews where product_name = '$name'";
+        $query = "select stars from reviews where product_name = '$id'";
         $review = $this->read($query);
         $count = 0;
         $star_count = 0;
@@ -19,5 +19,12 @@ class ReviewModel extends BaseModel
         }
         $avarage_count = round($count/$star_count, 1);
         return $avarage_count;
+    }
+
+    public function find_comments($name)
+    {
+        $query = "select * from $this->table where product_name='$name'";
+        $data = $this->read($query);
+        return $data;
     }
 }

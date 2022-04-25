@@ -48,6 +48,7 @@
         <th>edit</th>
         <th>review</th>
         <th>delete</th>
+        <th>comments</th>
     </tr>
     </thead>
 
@@ -58,10 +59,11 @@
         <td><?= $d['name'] ?></td>
         <td><?= $d['description'] ?></td>
         <td><?= $d['avg_review'] ?></td>
-        <td><?= $d['image'] ?></td>
+        <td><img src="../../public/<?= $d['image'] ?>" style="height: 50px;width: 50px;"></td>
         <td><a href="update?id=<?= $d['id']?>" >update</a></td>
         <td><a href="review/?id=<?= $d['id']?>" >review</a></td>
-        <td><a href="product/delete?id=<?= $d['id']?>" >delete</a></td>
+        <td><a href="'product/delete?id=<?= $d['id']?>" >delete</a></td>
+        <td><a href="comment?id=<?=$d['id']?>">comments</a> </td>
     </tr>
     <?php } ?>
 

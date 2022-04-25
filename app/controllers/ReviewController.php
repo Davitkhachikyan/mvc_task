@@ -8,7 +8,7 @@ class ReviewController extends BaseController
         if($user->check_logged_in()){
             $obj = $this->loadModel('ProductModel');
             $product_id = $_GET['id'];
-            $data = $obj->find($product_id);
+            $data = $obj->find_all_columns($product_id);
             $data = $data[0];
             $this->view('review', $data);
         }
@@ -24,9 +24,11 @@ class ReviewController extends BaseController
         $rev = $this->loadModel('ReviewModel');
 
         $prod = $this->loadModel("ProductModel");
-        $stars = $rev->avg_stars($_POST['product_name']);
-        $product_name = $_POST['product_name'];
-        $prod->write("update products set avg_review = '$stars' where name = '$product_name'");
+
+        $product_real_name = $_POST['product_name'];
+        $product_name = $_POST['id'];
+        $stars = $rev->avg_stars($_POST['id']);
+        $prod->write("update products set avg_review = '$stars' where name = '$product_real_name'");
         $user = $this->loadModel('UserModel');
 
         $data['stars'] = $_POST['star'];
