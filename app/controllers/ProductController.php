@@ -38,9 +38,14 @@ class ProductController extends BaseController
     public function update()
     {
         $product = $this->loadModel("ProductModel");
+
+        $folder = 'assets/';
+        $destination = $folder . $_FILES['file']['name'];
+        move_uploaded_file($_FILES['file']['tmp_name'], $destination);
+
         $data['name'] = $_POST['name'];
         $data['description'] = $_POST['description'];
-        $data['image'] = $_FILES['file']['tmp_name'];
+        $data['image'] = $destination;
         $id = $_POST['id'];
         $product->update($data, $id);
         header("Location:" . ROOT . 'dashboard');
